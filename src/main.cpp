@@ -30,11 +30,11 @@ ReactESP app([] () {
   // Create an INA219, which represents the physical sensor.
   // 0x40 is the default address. Chips can be modified to use 0x41 (shown here), 0x44, or 0x45.
   // The default volt and amp ranges are 32V and 2A (cal32_2). Here, 32v and 1A is specified with cal32_1.
-  auto* pINA219 = new INA219(0x41, cal32_1);
+  auto* pINA219 = new INA219(0x40, cal32_1);
 
 
   // Define the read_delay you're going to use, if other than the default of 500 ms.
-  const uint read_delay = 1000; // once per second
+  const uint read_delay = 5000; // once per second
 
   // Create an INA219value, which is used to read a specific value from the INA219, and send its output
   // to SignalK as a number (float). This one is for the bus voltage.
