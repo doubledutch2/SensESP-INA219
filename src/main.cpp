@@ -25,7 +25,7 @@ ReactESP app([] () {
   // true will disable systemHz, freemem, uptime, and ipaddress "sensors"
   bool disableStandardSensors = true;
   scan_i2c();
-  sensesp_app = new SensESPApp(disableStandardSensors);
+  sensesp_app = new SensESPApp(noStdSensors);
 
   // Create an INA219, which represents the physical sensor.
   // 0x40 is the default address. Chips can be modified to use 0x41 (shown here), 0x44, or 0x45.
@@ -34,33 +34,33 @@ ReactESP app([] () {
 
 
   // Define the read_delay you're going to use, if other than the default of 500 ms.
-  const uint read_delay = 5000; // once per second
+  const uint read_delay = 10000; // once per second
 
   // Create an INA219value, which is used to read a specific value from the INA219, and send its output
   // to SignalK as a number (float). This one is for the bus voltage.
-  auto* pINA219busVoltage = new INA219value(pINA219, bus_voltage, read_delay, "someElectricDevice/busVoltage");
+  auto* pINA219busVoltage = new INA219value(pINA219, bus_voltage, read_delay, "ina219/busVoltage");
       
-      pINA219busVoltage->connectTo(new SKOutputNumber("electrical.someelectricdevice.busVoltage"));
+      pINA219busVoltage->connectTo(new SKOutputNumber("electrical.ina219.busVoltage"));
 
   // Do the same for the shunt voltage.
-  auto* pINA219shuntVoltage = new INA219value(pINA219, shunt_voltage, read_delay, "someElectricDevice/shuntVoltage");
+  auto* pINA219shuntVoltage = new INA219value(pINA219, shunt_voltage, read_delay, "ina219/shuntVoltage");
       
-      pINA219shuntVoltage->connectTo(new SKOutputNumber("electrical.someelectricdevice.shuntVoltage"));
+      pINA219shuntVoltage->connectTo(new SKOutputNumber("electrical.ina219.shuntVoltage"));
 
   // Do the same for the current (amperage).
-  auto* pINA219current = new INA219value(pINA219, current, read_delay, "someElectricDevice/current");
+  auto* pINA219current = new INA219value(pINA219, current, read_delay, "ina219/current");
       
-      pINA219current->connectTo(new SKOutputNumber("electrical.someelectricdevice.current"));   
+      pINA219current->connectTo(new SKOutputNumber("electrical.ina219.current"));   
 
   // Do the same for the power (watts).
-  auto* pINA219power = new INA219value(pINA219, power, read_delay, "someElectricDevice/power");
+  auto* pINA219power = new INA219value(pINA219, power, read_delay, "ina219/power");
       
-      pINA219power->connectTo(new SKOutputNumber("electrical.someelectricdevice.power"));  
+      pINA219power->connectTo(new SKOutputNumber("electrical.ina219.power"));  
 
   // Do the same for the load voltage.
-  auto* pINA219loadVoltage = new INA219value(pINA219, load_voltage, read_delay, "someElectricDevice/loadVoltage");
+  auto* pINA219loadVoltage = new INA219value(pINA219, load_voltage, read_delay, "ina219/loadVoltage");
       
-      pINA219loadVoltage->connectTo(new SKOutputNumber("electrical.someelectricdevice.loadVoltage"));         
+      pINA219loadVoltage->connectTo(new SKOutputNumber("electrical.ina219.loadVoltage"));         
 
 
   sensesp_app->enable();
