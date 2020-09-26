@@ -25,7 +25,7 @@ ReactESP app([] () {
   // true will disable systemHz, freemem, uptime, and ipaddress "sensors"
   bool disableStandardSensors = true;
   scan_i2c();
-  sensesp_app = new SensESPApp(noStdSensors);
+  sensesp_app = new SensESPApp();
 
   // Create an INA219, which represents the physical sensor.
   // 0x40 is the default address. Chips can be modified to use 0x41 (shown here), 0x44, or 0x45.
@@ -34,7 +34,7 @@ ReactESP app([] () {
 
 
   // Define the read_delay you're going to use, if other than the default of 500 ms.
-  const uint read_delay = 10000; // once per second
+  const uint read_delay = 5000; // once per second
 
   // Create an INA219value, which is used to read a specific value from the INA219, and send its output
   // to SignalK as a number (float). This one is for the bus voltage.
