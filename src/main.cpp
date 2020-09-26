@@ -16,7 +16,7 @@ ReactESP app([] () {
   Serial.begin(115200);
 
   // A small arbitrary delay is required to let the
-  // serial port catch up
+  // serial port catch up 
 
   delay(100);
   Debug.setSerialEnabled(true);
