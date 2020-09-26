@@ -25,7 +25,7 @@ ReactESP app([] () {
   // true will disable systemHz, freemem, uptime, and ipaddress "sensors"
   bool disableStandardSensors = true;
   scan_i2c();
-  sensesp_app = new SensESPApp();
+  sensesp_app = new SensESPApp("SensESP","","","",0,NONE);
 
   // Create an INA219, which represents the physical sensor.
   // 0x40 is the default address. Chips can be modified to use 0x41 (shown here), 0x44, or 0x45.
